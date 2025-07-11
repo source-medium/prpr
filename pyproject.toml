@@ -1,0 +1,42 @@
+[tool.poetry]
+name = "prpr"
+version = "0.1.0"
+description = "CLI tool for managing GitHub pull request comments"
+authors = ["prpr team"]
+readme = "README.md"
+packages = [{include = "prpr"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+click = "^8.0.0"
+toml = "^0.10.2"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.0"
+pytest-cov = "^5.0.0"
+pytest-mock = "^3.12.0"
+ruff = "^0.6.0"
+black = "^24.0.0"
+
+[tool.poetry.scripts]
+prpr = "prpr.__main__:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--cov=prpr --cov-report=html --cov-report=term-missing --cov-fail-under=90"
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "C90", "I", "N", "UP", "YTT", "S", "BLE", "FBT", "B", "A", "COM", "C4", "DTZ", "T10", "EM", "EXE", "FA", "ISC", "ICN", "G", "INP", "PIE", "T20", "PYI", "PT", "Q", "RSE", "RET", "SLF", "SLOT", "SIM", "TID", "TCH", "INT", "ARG", "PTH", "PL", "TRY", "FLY", "NPY", "AIR", "PERF", "RUF"]
+ignore = ["S101", "T201", "PLR0913", "PLR0912", "PLR0915"]
+
+[tool.black]
+line-length = 88
+target-version = ['py310']
